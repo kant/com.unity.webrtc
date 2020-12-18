@@ -22,7 +22,7 @@ namespace webrtc
 
         virtual std::vector<webrtc::SdpVideoFormat> GetHardwareEncoderFormats() const;
 
-        UnityVideoEncoderFactory(IVideoEncoderObserver* observer);
+        UnityVideoEncoderFactory(IVideoEncoderObserver* observer, bool hardwareEncoderSupport);
         ~UnityVideoEncoderFactory();
     private:
         IVideoEncoderObserver* m_observer;

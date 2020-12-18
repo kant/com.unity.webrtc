@@ -396,7 +396,10 @@ extern "C"
             DebugLog("Already created context with ID %d", uid);
             return ctx;
         }
-        ctx = ContextManager::GetInstance()->CreateContext(uid, encoderType);
+        
+        bool supportHardwareCodec = GetHardwareEncoderSupport();
+        
+        ctx = ContextManager::GetInstance()->CreateContext(uid, supportHardwareCodec);
         return ctx;
     }
 

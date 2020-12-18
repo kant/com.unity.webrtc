@@ -71,11 +71,10 @@ namespace webrtc
 
     std::vector<webrtc::SdpVideoFormat> UnityVideoEncoderFactory::GetSupportedFormats() const
     {
-        // todo(kazuki): should support codec other than h264 like vp8, vp9 and av1.
-        //
-        // std::vector <webrtc::SdpVideoFormat> formats2 = internal_encoder_factory_->GetSupportedFormats();
-        // formats.insert(formats.end(), formats2.begin(), formats2.end());
-        return GetHardwareEncoderFormats();
+        std::vector<webrtc::SdpVideoFormat> formats = GetHardwareEncoderFormats();
+        std::vector <webrtc::SdpVideoFormat> formats2 = internal_encoder_factory_->GetSupportedFormats();
+        formats.insert(formats.end(), formats2.begin(), formats2.end());
+        return ;
     }
 
     webrtc::VideoEncoderFactory::CodecInfo UnityVideoEncoderFactory::QueryVideoEncoder(

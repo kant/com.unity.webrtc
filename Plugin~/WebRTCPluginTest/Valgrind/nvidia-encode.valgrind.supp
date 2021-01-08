@@ -1,0 +1,9 @@
+{
+   nvEncOpenEncodeSessionEx
+   Memcheck:Cond
+   ...
+   obj:/usr/lib/x86_64-linux-gnu/libnvcuvid.so.455.45.01
+   ...
+   obj:/usr/lib/x86_64-linux-gnu/libnvidia-encode.so.455.45.01
+   ...
+}

@@ -418,6 +418,7 @@ GraphicsDeviceTestBase::GraphicsDeviceTestBase()
 GraphicsDeviceTestBase::~GraphicsDeviceTestBase()
 {
     m_device->ShutdownV();
+    delete m_device;
     m_device = nullptr;
     DestroyGfxDevice(m_pNativeGfxDevice, m_unityGfxRenderer);
 }

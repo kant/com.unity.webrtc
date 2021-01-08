@@ -1,0 +1,11 @@
+{
+   cuInit
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:*alloc
+   ...
+   obj:/usr/lib/x86_64-linux-gnu/libcuda.so.455.45.01
+   ...
+   fun:cuInit
+   ...
+}

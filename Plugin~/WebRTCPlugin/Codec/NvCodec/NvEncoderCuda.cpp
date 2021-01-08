@@ -56,5 +56,9 @@ namespace webrtc
         return tex->GetEncodeTexturePtrV();
     }
 
+    void NvEncoderCuda::ReleaseInputResourceV(void* pResource)
+    {
+    }
+
 } // end namespace webrtc
 } // end namespace unity

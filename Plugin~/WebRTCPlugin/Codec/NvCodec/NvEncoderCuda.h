@@ -14,6 +14,7 @@ namespace webrtc
         virtual ~NvEncoderCuda() = default;
     protected:
         virtual void* AllocateInputResourceV(ITexture2D* tex) override;
+        void ReleaseInputResourceV(void* pResource) override;
     };
 
 } // end namespace webrtc

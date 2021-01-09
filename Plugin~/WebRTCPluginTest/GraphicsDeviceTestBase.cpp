@@ -277,6 +277,7 @@ void DestroyDeviceVulkan(void* pGfxDevice)
 {
     UnityVulkanInstance* pVkInstance = static_cast<UnityVulkanInstance*>(pGfxDevice);
     vkDestroyDevice(pVkInstance->device, nullptr);
+    delete pVkInstance;
     pVkInstance = nullptr;
 }
 

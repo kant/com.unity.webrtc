@@ -415,6 +415,20 @@ GraphicsDeviceTestBase::GraphicsDeviceTestBase()
     m_device->InitV();
 }
 
+void GraphicsDeviceTestBase::SetUp()
+{
+#if defined(LEAK_SANITIZER)
+    __lsan_disable();
+    __lsan_enable();
+#endif
+}
+
+void GraphicsDeviceTestBase::TearDown()
+{
+#if defined(LEAK_SANITIZER)
+    ASSERT_EQ(__lsan_do_recoverable_leak_check(),0);
+#endif
+}
 
 GraphicsDeviceTestBase::~GraphicsDeviceTestBase()
 {

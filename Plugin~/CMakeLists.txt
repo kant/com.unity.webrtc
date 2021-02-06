@@ -66,12 +66,16 @@ find_package(WebRTC REQUIRED)
 
 if(iOS OR macOS)
   find_package(Framework REQUIRED)
-else()
+endif()
+
+if(Windows OR Linux)
   find_package(CUDA REQUIRED)
-  find_package(Vulkan REQUIRED)
   add_subdirectory(NvCodec)
 endif()
 
+if(Windows OR Linux OR Android)
+  find_package(Vulkan REQUIRED)
+endif()
 
 add_subdirectory(WebRTCPlugin)
 add_subdirectory(WebRTCPluginTest)

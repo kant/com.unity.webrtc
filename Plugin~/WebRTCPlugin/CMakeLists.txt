@@ -195,6 +195,16 @@ elseif(iOS)
     PROPERTIES 
       LINK_FLAGS "-ObjC"
   )
+elseif(Android)
+  target_compile_definitions(WebRTCLib
+  PUBLIC
+    WEBRTC_ANDROID
+    WEBRTC_POSIX
+  )
+  target_link_libraries(WebRTCLib
+  PRIVATE
+    ${WEBRTC_LIBRARY}
+  )
 endif()
 
 target_include_directories(WebRTCLib

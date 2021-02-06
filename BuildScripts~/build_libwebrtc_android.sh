@@ -28,13 +28,16 @@ mkdir -p "$ARTIFACTS_DIR/lib"
 
 for target_cpu in "arm64" "x64"
 do
-  mkdir "$ARTIFACTS_DIR/lib/${target_cpu}"
   for is_debug in "true" "false"
   do
     # generate ninja files
     gn gen "$OUTPUT_DIR" --root="src" \
-      --args="is_debug=${is_debug} target_os=\"android\" target_cpu=\"${target_cpu}\" rtc_use_h264=false rtc_include_tests=false rtc_build_examples=false"
-
+      --args="is_debug=${is_debug}    \
+      target_os=\"android\"           \
+      target_cpu=\"${target_cpu}\"    \
+      rtc_use_h264=false              \
+      rtc_include_tests=false         \
+      rtc_build_examples=false"
 
     # build static library
     ninja -C "$OUTPUT_DIR" webrtc
@@ -45,6 +48,7 @@ do
     fi
 
     # cppy static library
+    mkdir "$ARTIFACTS_DIR/lib/${target_cpu}"
     cp "$OUTPUT_DIR/obj/libwebrtc.a" "$ARTIFACTS_DIR/lib/${target_cpu}/${filename}"
   done
 done

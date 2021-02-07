@@ -21,7 +21,7 @@ cmake .                                   \
   -D CMAKE_SYSTEM_VERSION=21              \
   -D CMAKE_ANDROID_ARCH_ABI=$ARCH_ABI     \
   -D CMAKE_ANDROID_NDK=$ANDROID_NDK       \
-  -D CMAKE_ANDROID_STL_TYPE=c++_static
+  -D CMAKE_ANDROID_STL_TYPE=c++_shared
 
 cmake --build build     \
   --config Release      \

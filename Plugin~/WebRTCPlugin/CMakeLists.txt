@@ -207,7 +207,10 @@ elseif(Android)
   )
   target_compile_options(WebRTCLib
     PUBLIC 
-      -fno-rtti
+      -fno-lto -fno-rtti
+  )
+  set(PROJECT_BINARY_DIR
+    "${CMAKE_SOURCE_DIR}/../Runtime/Plugins/Android"
   )
 endif()
 

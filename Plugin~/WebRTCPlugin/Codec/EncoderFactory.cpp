@@ -17,7 +17,11 @@
 
 #include "SoftwareCodec/SoftwareEncoder.h"
 
-#if defined(SUPPORT_VULKAN)
+#if defined(UNITY_LINUX) || defined(UNITY_WIN)
+#define CUDA_PLATFORM
+#endif
+
+#if defined(SUPPORT_VULKAN) && defined(CUDA_PLATFORM)
 #include "NvCodec/NvEncoderCuda.h"
 #endif
 
@@ -38,13 +42,14 @@ namespace webrtc
 #if defined(SUPPORT_METAL)
         // todo(kazuki): check VideoToolbox compatibility
         return true;
-#else
+#elif defined(CUDA_PLATFORM)
         if(!NvEncoder::LoadModule())
         {
             return false;
         }
         return NvEncoder::CheckDriverVersion();
 #endif
+        return false;
     }
 
     //Can throw exception. The caller is expected to catch it.
@@ -86,7 +91,7 @@ namespace webrtc
                 break;
             }
 #endif
-#if defined(SUPPORT_VULKAN)
+#if defined(SUPPORT_VULKAN) && defined(CUDA_PLATFORM)
             case GRAPHICS_DEVICE_VULKAN: {
                 if (encoderType == UnityEncoderType::UnityEncoderHardware)
                 {

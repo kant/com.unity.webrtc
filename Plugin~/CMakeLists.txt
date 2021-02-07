@@ -73,7 +73,7 @@ if(Windows OR Linux)
   add_subdirectory(NvCodec)
 endif()
 
-if(Windows OR Linux OR Android)
+if(Windows OR Linux)
   find_package(Vulkan REQUIRED)
 endif()
 

@@ -197,13 +197,17 @@ elseif(iOS)
   )
 elseif(Android)
   target_compile_definitions(WebRTCLib
-  PUBLIC
-    WEBRTC_ANDROID
-    WEBRTC_POSIX
+    PUBLIC
+      WEBRTC_ANDROID
+      WEBRTC_POSIX
   )
   target_link_libraries(WebRTCLib
-  PRIVATE
-    ${WEBRTC_LIBRARY}
+    PRIVATE
+      ${WEBRTC_LIBRARY}
+  )
+  target_compile_options(WebRTCLib
+    PUBLIC 
+      -fno-rtti
   )
 endif()
 
